@@ -23,10 +23,12 @@
 	// Do any additional setup after loading the view, typically from a nib.
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
                                                             longitude:151.20
-                                                                 zoom:6];
+                                                                 zoom:10];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
     mapView_.settings.myLocationButton = YES;
+    mapView_.settings.compassButton = YES;
+    mapView_.settings.zoomGestures = YES;
     self.view = mapView_;
     
     // Creates a marker in the center of the map.
