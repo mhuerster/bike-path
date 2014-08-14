@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface XYZAppDelegate : UIResponder <UIApplicationDelegate>
 
