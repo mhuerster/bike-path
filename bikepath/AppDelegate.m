@@ -7,13 +7,21 @@
 //
 
 #import "AppDelegate.h"
+#import "URLCacheController.h"
 #import <GoogleMaps/GoogleMaps.h>
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @implementation AppDelegate
 
+@synthesize cacheController;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    cacheController = [[URLCacheController alloc] initWithNibName:@"MainView" bundle:[NSBundle mainBundle]];
+    
+    UIView *cacheControllerView = [cacheController view];
+    [_window addSubview:cacheControllerView];
+    [_window makeKeyAndVisible];
     // background color of navigation bar
     UIColor * color = [UIColor colorWithRed:255/255.0f green:251/255.0f blue:246/255.0f alpha:1.0f];
     [[UINavigationBar appearance] setBarTintColor:color];
