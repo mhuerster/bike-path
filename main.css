@@ -1,5 +1,7 @@
 body {
     background-image: url('bikepath.png');
+    background-repeat: no-repeat;
+    background-position: center;
     background-color: #cccccc;
 }
 
