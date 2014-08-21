@@ -28,7 +28,7 @@
 @implementation SearchMapViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self.mapView addObserver:self forKeyPath:@"myLocation" options:0 context:nil];
+   
 }
 
 - (void)dealloc {
@@ -61,13 +61,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIImage* logoImage = [UIImage imageNamed:@"titleicon"];
+    UIImage* logoImage = [UIImage imageNamed:@"titleicon2"];
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:logoImage];
 
     self.searchDisplayController.searchBar.placeholder = @"Where would you like to go?";
     
     AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDel loadCitiBikeData];
+    
+     [self.mapView addObserver:self forKeyPath:@"myLocation" options:0 context:nil];
     
     self.mapView.mapType                   = kGMSTypeNormal;
     self.mapView.settings.zoomGestures     = YES;
@@ -133,7 +135,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SPGooglePlacesAutocompletePlace *place = [self placeAtIndexPath:indexPath];
-    NSLog(@"place.name: %@", place.name);
     [place resolveToPlacemark:^(CLPlacemark *placemark, NSString *addressString, NSError *error) {
         if (error) {
             [ErrorMessage renderErrorMessage:@"Could not map selected place" cancelButtonTitle:@"OK" error:error];
